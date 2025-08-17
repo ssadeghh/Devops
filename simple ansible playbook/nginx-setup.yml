@@ -1,0 +1,30 @@
+---
+- name: Install and configure Nginx
+  hosts: webservers
+  become: yes
+
+  tasks:
+    - name: Install Nginx on Ubuntu
+      apt:
+        name: nginx
+        state: present
+        update_cache: yes
+      when: ansible_os_family == "Debian"
+
+    - name: Install Nginx on CentOS
+      yum:
+        name: nginx
+        state: present
+      when: ansible_os_family == "RedHat"
+
+    - name: Ensure Nginx is running
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+
+    - name: Copy custom index.html
+      copy:
+        src: files/index.html
+        dest: /var/www/html/index.html
+        mode: '0644'
