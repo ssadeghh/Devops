@@ -1,0 +1,8 @@
+services:
+  flaskWeb:
+    build: .
+    image: flaskweb:latest
+    ports:
+      - "8001:5000"
+  redis:
+    image: "docker.arvancloud.ir/redis:alpine"
