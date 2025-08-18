@@ -1,0 +1,19 @@
+services:
+  webapp:
+    build: .
+    image: test-web
+    ports:
+      - "5000:5000"
+
+  promethues:
+    image: prom/prometheus:latest
+    ports:
+      - "9091:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+      
