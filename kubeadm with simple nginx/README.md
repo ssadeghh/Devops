@@ -143,3 +143,31 @@ http://<NODE_IP>:31234
 ```
 
 Where ```<NODE_IP>``` is the IP of either the master or worker node.
+
+
+### 🚨Solve auto complete of kubectl 
+
+first install this: 
+
+```bash
+sudo apt-get install -y bash-completion
+```
+
+then active auto complete easily:
+
+```bash
+echo 'source <(kubectl completion bash)' >> ~/.bashrc
+```
+
+if you want to create an alias do this: (for example alias k for kubectl)
+
+```bash
+echo 'alias k=kubectl' >> ~/.bashrc
+echo 'complete -o default -F __start_kubectl k' >> ~/.bashrc
+```
+
+and just reload it:
+
+```bash
+source ~/.bashrc
+```
