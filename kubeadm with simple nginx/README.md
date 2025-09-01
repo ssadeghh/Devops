@@ -43,6 +43,43 @@ sudo apt install -y kubelet kubeadm kubectl containerd
 sudo apt-mark hold kubelet kubeadm kubectl
 ```
 
+## For the first time of installing k8s do these too
+
+create this if it doesn't exist:
+```bash
+sudo mkdir -p /etc/containerd
+containerd config default | sudo tee /etc/containerd/config.toml
+```
+
+now we should tell kubelet to work with systemd, to do this we should open this file ```/etc/containerd/config.toml``` and edit this line:
+
+```bash
+SystemdCgroup = false
+```
+
+to: 
+
+```bash
+SystemdCgroup = true
+```
+
+and then just restart it:
+
+```bash
+sudo systemctl restart containerd
+sudo systemctl enable containerd
+sudo systemctl status containerd
+```
+
+and be sure that socket is working well:
+
+```bash
+sudo ctr version
+sudo crictl info
+```
+
+if you see JSON in output of this command ```sudo crictl info``` it will work well.
+
 ## 3. Initialize the Master Node
 On the **master node:**
 ```bash
