@@ -72,7 +72,7 @@ edit ```Dockerfile```:
 ```bash
 FROM wordpress:6.5-php8.1-apache
 
-# ﻦﺼﺑ PostgreSQL PHP extension
+
 RUN apt-get update && apt-get install -y \
     libpq-dev \
     && docker-php-ext-install pdo pdo_pgsql pgsql
