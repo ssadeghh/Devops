@@ -101,3 +101,13 @@ db.php  index.php  pg4wp  plugins  themes  uploads
 ls wp-content/plugins/
 akismet  hello.php  index.php  pg4wp
 ```
+
+
+promql
+```bash
+pg_up
+pg_stat_activity_count
+(pg_stat_database_blks_hit_total) / (pg_stat_database_blks_hit_total + pg_stat_database_blks_read_total)
+process_cpu_seconds_total{job="postgres_exporter"}
+process_resident_memory_bytes{job="postgres_exporter"}
+pg_stat_activity_waiting
