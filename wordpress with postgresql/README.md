@@ -1,4 +1,3 @@
-# Devops
 # WordPress with PostgreSQL, Prometheus & Grafana
 
 This project runs **WordPress** on **PostgreSQL** using the [pg4wp plugin](https://github.com/PostgreSQL-For-Wordpress/postgresql-for-wordpress), and provides monitoring with **Prometheus** and **Grafana**.
